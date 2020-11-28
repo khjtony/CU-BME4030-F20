@@ -9,6 +9,7 @@ This final project is used to replicate a research from https://github.com/akara
 # Quick start
 * Install docker community environment
 * workspace is in the final_project folder, so: `$cd final_project`
-* `$bash ./scripts/run_gpu_container.sh`
+* `$bash ./scripts/run_cpu_container.sh`
+* If you have Nvidia GPU then you can `$bash ./scripts/run_gpu_container.sh` 
 * Now you should be in the docker environment.
 * In the docker, `#bash ./script/pull_code_and_dataset.sh`

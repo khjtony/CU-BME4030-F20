@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Build and push
+        name: Build and push GPU version
         uses: docker/build-push-action@v2
         with:
           context: ./final_project
@@ -32,3 +32,12 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: khjtony/bme4030-project-gpu:dev
+      -
+        name: Build and push CPU version
+        uses: docker/build-push-action@v2
+        with:
+          context: ./final_project
+          file: ./final_project/docker/Dockerfile.cpu
+          platforms: linux/amd64
+          push: true
+          tags: khjtony/bme4030-project-cpu:dev
