@@ -24,3 +24,7 @@ echo "yes" | ~/Downloads/miniconda.sh -b -p ~/miniconda
 
 # replace .bashrc
 mv /docker/.bashrc ~/.bashrc
+
+# Clean cache to save docker image size
+apt-get clean
+rm -rf /var/lib/apt/lists/*

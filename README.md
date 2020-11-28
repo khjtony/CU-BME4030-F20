@@ -7,6 +7,7 @@ Team for final project:
 
 This final project is used to replicate a research from https://github.com/akaraspt/deepsleepnet
 # Quick start
+* Pull this repo to your local directory: `$git clone --recurse-submodules https://github.com/khjtony/CU-BME4030-F20.git ./cu-bme4030-f20`
 * Install docker community environment
 * workspace is in the final_project folder, so: `$cd final_project`
 * `$bash ./scripts/run_cpu_container.sh`
