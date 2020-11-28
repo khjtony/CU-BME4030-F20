@@ -13,4 +13,4 @@ else
 fi
 
 # Open port for Jupyter. Default is 8888.
-docker run --gpus all -it -p 8888:8888 -v `pwd`:/home/root/workspace --user "$(id -u):$(id -g)" --name $CONTAINER_NAME --network=host bme4030/bme4030-project-gpu:dev bash
+docker run --gpus all -it -p 8888:8888 -v `pwd`:/home/root/workspace --user "$(id -u):$(id -g)" --name $CONTAINER_NAME --network=host khjtony/bme4030-project-gpu:dev bash
