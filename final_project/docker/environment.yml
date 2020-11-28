@@ -1,0 +1,14 @@
+name: bme4030-final-project
+dependencies:
+  - python   # or 2.7
+  - tensorflow-gpu=1.15.*
+  - tensorflow=1.15.*
+  - matplotlib
+  - scikit-learn
+  - scipy
+  - numpy
+  - pandas
+  - pip
+  - pip:
+    - tensorlayer
+    - mne

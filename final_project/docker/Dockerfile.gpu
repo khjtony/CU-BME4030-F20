@@ -1,0 +1,12 @@
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+
+# Copy setup script to image
+COPY ./docker ./docker
+
+# Run the script
+RUN bash -c "apt-get update && \
+    apt-get install -y apt-utils wget git gnupg"
+
+RUN bash -c "cd && bash /docker/setup_environment.sh"
+
+WORKDIR "/home/root/workspace"
