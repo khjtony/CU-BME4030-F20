@@ -28,7 +28,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./final_project
-          file: ./final_project/docker/Dockerfile.gpu
+          build-args: |
+            BASE_IMAGE=nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
+          file: ./final_project/docker/Dockerfile
           platforms: linux/amd64
           push: true
           tags: khjtony/bme4030-project-gpu:dev
@@ -37,7 +39,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./final_project
-          file: ./final_project/docker/Dockerfile.cpu
+          build-args: |
+            BASE_IMAGE=ubuntu:18.04
+          file: ./final_project/docker/Dockerfile
           platforms: linux/amd64
           push: true
           tags: khjtony/bme4030-project-cpu:dev
