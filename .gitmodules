@@ -1,0 +1,6 @@
+[submodule "submodule_deepsleepnet"]
+	path = submodule_deepsleepnet
+	url = https://github.com/khjtony/deepsleepnet.git
+[submodule "final_project/submodule_deepsleepnet"]
+	path = final_project/submodule_deepsleepnet
+	url = https://github.com/khjtony/deepsleepnet.git
