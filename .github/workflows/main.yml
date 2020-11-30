@@ -1,8 +1,13 @@
 name: ci
 
+name: ManuallyTriggerDockerBuilding
 on:
-  push:
-    branches: master
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'tag version'
+        required: true
+        default: 'dev'
 
 jobs:
   path-context:
@@ -33,7 +38,7 @@ jobs:
           file: ./final_project/docker/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: khjtony/bme4030-project-gpu:dev
+          tags: khjtony/bme4030-project-gpu:${{ github.event.inputs.tag }}
       -
         name: Build and push CPU version
         uses: docker/build-push-action@v2
@@ -44,4 +49,4 @@ jobs:
           file: ./final_project/docker/Dockerfile
           platforms: linux/amd64
           push: true
-          tags: khjtony/bme4030-project-cpu:dev
+          tags: khjtony/bme4030-project-cpu:${{ github.event.inputs.tag }}
