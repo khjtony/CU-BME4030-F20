@@ -28,5 +28,5 @@ For the same permission reason I did not install git in the docker environment t
 
 # Pushing commits to submodule
 original work repository was forked and added as submodule in the submodule_deepsleepnet folder in order to accept customized codes. \
-Need to pay attention that all the changes done in the /final_project/submodule_deepsleepnet should be add/commit/push from that folder. \ 
+Need to pay attention that all the changes done in the /final_project/submodule_deepsleepnet should be add/commit/push from that folder. \
 Other changes for example in the /src folder, can be add/commit/push from cu-bme4030-f20 folder. 
