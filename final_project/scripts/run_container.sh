@@ -33,14 +33,16 @@ fi
 
 # Check if container already there
 if [ `docker container ls -a | grep ${CONTAINER_NAME} | wc -l` -ge 1 ]; then
+  container_id=`docker container ls -a | grep ${CONTAINER_NAME} | cut -d' ' -f1`
   if $opt_run ; then
     echo "There is a container. Reattach by default"
-    docker start $CONTAINER_NAME
-    docker attach $CONTAINER_NAME
+    docker container start $container_id
+    docker container attach $container_id
     exit;
   elif $opt_delete ; then
     echo "Delete current container. You need to run a new one"
-    docker container ls -a | grep ${CONTAINER_NAME} | cut -d' ' -f1 | xargs -I {} docker container rm {}
+    docker container stop $container_id
+    docker container rm $container_id
     exit;
   fi
 else
@@ -59,9 +61,8 @@ docker run --gpus all -it \
   -e MYGID=$(id -g) \
   -e MYUSER=$(id -nu) \
   -e MYGROUP=$(id -ng) \
-  -v `pwd`:/home/root/workspace \
+  -v `pwd`:/root/workspace \
   --name $CONTAINER_NAME \
   --network=host \
-  khjtony/bme4030-project-gpu:dev \
- \
+  $IMAGE_NAME \
   bash

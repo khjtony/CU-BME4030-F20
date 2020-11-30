@@ -11,4 +11,4 @@ dependencies:
   - pip
   - pip:
     - tensorlayer
-    - mne
+    - mne==0.20.*

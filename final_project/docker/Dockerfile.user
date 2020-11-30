@@ -1,0 +1,9 @@
+FROM ubuntu:18.04
+
+# This docker file is used to 
+# Copy setup script to image
+COPY ./docker ./docker
+RUN bash -c "cd && bash /docker/setup_environment.sh"
+RUN bash -c "chmod +x /docker/entrypoint-setuser.sh"
+WORKDIR "/home/user/workspace"
+ENTRYPOINT /docker/entrypoint-setuser.sh
