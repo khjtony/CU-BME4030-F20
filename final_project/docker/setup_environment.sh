@@ -6,14 +6,14 @@ cd $HOME
 mkdir workspace
 mkdir Downloads
 
+# One line to install tzdata
+DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
+
 # install mongodb
 cd Downloads
 wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | apt-key add -
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.4 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-4.4.list
 apt-get update
-
-# One line to install tzdata
-DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
 apt-get install -y mongodb-org
 systemctl daemon-reload
 systemctl enable mongod
@@ -29,5 +29,6 @@ $HOME/miniconda/bin/conda env create -f /docker/environment.yml
 mv /docker/.bashrc $HOME/.bashrc
 
 # Clean cache to save docker image size
+rm -rf $HOME/Downloads/*
 apt-get clean
 rm -rf /var/lib/apt/lists/*

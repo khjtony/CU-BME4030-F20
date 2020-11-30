@@ -57,10 +57,6 @@ fi
 # Open port for Jupyter. Default is 8888.
 docker run --gpus all -it \
   -p 8888:8888 \
-  -e MYUID=$(id -u) \
-  -e MYGID=$(id -g) \
-  -e MYUSER=$(id -nu) \
-  -e MYGROUP=$(id -ng) \
   -v `pwd`:/root/workspace \
   --name $CONTAINER_NAME \
   --network=host \
