@@ -11,6 +11,9 @@ Options: \n
 
 CONTAINER_NAME="bme4030-project-cpu"
 IMAGE_NAME="khjtony/bme4030-project-cpu:dev"
+NPROC=$(nproc)
+# Use half of the available CPUs to avoid affecting other jobs.
+DOCKER_CPUS=$(expr $NPROC / 2)
 
 # arguments
 opt_run=false
@@ -54,10 +57,12 @@ else
   fi
 fi
 
+
 # Open port for Jupyter. Default is 8888.
 docker run --gpus all -it \
   -p 8888:8888 \
   -v `pwd`:/root/workspace \
+  --cpus=$DOCKER_CPUS \
   --name $CONTAINER_NAME \
   --network=host \
   $IMAGE_NAME \
